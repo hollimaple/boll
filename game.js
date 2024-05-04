@@ -37,6 +37,41 @@ document.addEventListener('DOMContentLoaded', function() {
         drawBall();
     }
 
+    // 参考: https://qiita.com/nakakaz11/items/a9be602874bd54819a18
+    function ClickRequestDeviceSensor() {
+        DeviceOrientationEvent.requestPermission()
+        .then(function (response) {
+            if (response === "granted") {
+                window.addEventListener('deviceorientation', function(event) {
+                    let x = event.gamma; // 左右の傾き
+                    let y = event.beta;  // 前後の傾き
+
+                updateBallPosition(x, y);
+                });
+                $("#sensorrequest").css("display", "none");
+            }
+        })
+        .catch(function (e) {
+            console.log(e);
+        });
+    }
+
+    if (window.DeviceOrientationEvent) {
+        if (
+        DeviceOrientationEvent.requestPermission &&
+        typeof DeviceOrientationEvent.requestPermission === "function"
+        ) {
+            $("body").css("display", "none");
+            var banner =
+                '<div id="sensorrequest" onclick="ClickRequestDeviceSensor();">
+                <p>センサー有効化</p>
+                </div>';
+            $("body").prepend(banner);
+        } else {
+            window.addEventListener("deviceorientation", deviceOrientation);
+        }
+    }
+    
     window.addEventListener('deviceorientation', function(event) {
         let x = event.gamma; // 左右の傾き
         let y = event.beta;  // 前後の傾き
