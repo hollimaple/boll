@@ -68,7 +68,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>`;
             $("body").prepend(banner);
         } else {
-            window.addEventListener("deviceorientation", deviceOrientation);
+            window.addEventListener('deviceorientation', function(event) {
+                let x = event.gamma; // 左右の傾き
+                let y = event.beta;  // 前後の傾き
+
+                updateBallPosition(x, y);
+            });
         }
     }
 
