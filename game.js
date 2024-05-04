@@ -37,15 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
         drawBall();
     }
 
-    function request_permission(){
-        if (
-        DeviceOrientationEvent &&
-        DeviceOrientationEvent.requestPermission &&
-        typeof DeviceOrientationEvent.requestPermission === 'function') {
-            DeviceOrientationEvent.requestPermission();
-         }
-    }
-
     // 参考: https://qiita.com/nakakaz11/items/a9be602874bd54819a18
     function ClickRequestDeviceSensor() {
         DeviceOrientationEvent.requestPermission()
@@ -57,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 updateBallPosition(x, y);
                 });
-                $("#sensorrequest").css("display", "none");
+                //$("#sensorrequest").css("display", "none");
             }
         })
         .catch(function (e) {
@@ -70,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         DeviceOrientationEvent.requestPermission &&
         typeof DeviceOrientationEvent.requestPermission === "function"
         ) {
-            $("body").css("display", "none");
+            //$("body").css("display", "none");
             var banner =
                 `<div id="sensorrequest" onclick="ClickRequestDeviceSensor()">
                 <p>センサー有効化</p>
