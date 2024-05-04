@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 updateBallPosition(x, y);
                 });
-                //$("#sensorrequest").css("display", "none");
+                $("#sensorrequest").css("display", "none");
             }
         })
         .catch(function (e) {
