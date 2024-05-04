@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             //$("body").css("display", "none");
             var banner =
                 `<div id="sensorrequest">
-                <button type="button" onclick="ClickRequestDeviceSensor()">センサー有効化</button>　
+                <button type="button">センサー有効化</button>　
                 </div>`;
             $("body").prepend(banner);
             var button = document.getElementById('sensorrequest');
