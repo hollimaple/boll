@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>`;
             $("body").prepend(banner);
             var button = document.getElementById('sensorrequest');
-            button.addEventListener('click', DeviceMotionEvent.requestPermission());
+            button.addEventListener('click', ClickRequestDeviceSensor());
         } else {
             window.addEventListener('deviceorientation', function(event) {
                 let x = event.gamma; // 左右の傾き
